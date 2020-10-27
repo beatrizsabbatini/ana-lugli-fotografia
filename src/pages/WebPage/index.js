@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Banner from "./sections/Banner";
+import Categories from "./sections/Categories";
 import { Container, Title } from "./styles";
 
 function WebPage() {
@@ -8,10 +9,7 @@ function WebPage() {
   return (
     <Container>
       <Banner />
-      <Title>Webpage ainda em desenvolvimento</Title>
-      <button onClick={() => history.push("/ana-lugli-fotografia/Portal")}>
-        Acessar Portal
-      </button>
+      {/* <Categories /> */}
     </Container>
   );
 }

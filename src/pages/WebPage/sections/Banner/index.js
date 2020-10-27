@@ -1,9 +1,14 @@
 import React from "react";
-import NavigationBar from "../../../../components/UI/NavigationBar";
+
+import NavigationBar from "../../../../components/NavigationBar";
+import BannerSlider from '../../../../components/BannerSlider';
 
 function Banner() {
   return (
+    <>
     <NavigationBar />
+    <BannerSlider />
+</>
   );
 }
 

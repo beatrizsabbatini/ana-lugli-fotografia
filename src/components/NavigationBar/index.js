@@ -1,20 +1,19 @@
 import React from 'react';
-import { Container, NavLink, NavItem, Links } from "./styles";
-import {ReactComponent as Logo} from '../../../assets/logo.svg';
-import {ReactComponent as InstagramLogo} from '../../../assets/instagram.svg';
+
+import { useHistory } from "react-router-dom";
+
+import { Container, NavLink, NavItem, Links, AcessPortalButton, PortalLink } from "./styles";
+import {ReactComponent as Logo} from '../../assets/logo.svg';
+import {ReactComponent as InstagramLogo} from '../../assets/instagram.svg';
 
 export default function NavigationBar() {
-
+  const history = useHistory();
+  
   const navButtons = [
     {
-      id: 0,
+      id: 1,
       title: 'Início',
       route: 'banner'
-    },
-    {
-      id: 1,
-      title: 'Projeto em destaque',
-      route: 'detach'
     },
     {
       id: 2,
@@ -28,7 +27,7 @@ export default function NavigationBar() {
     },
     {
       id: 4,
-      title: 'Contact',
+      title: 'Contato',
       route: 'banner'
     },
   ]
@@ -43,6 +42,9 @@ export default function NavigationBar() {
         </NavItem>
       )
       )}
+      <AcessPortalButton onClick={() => history.push("/ana-lugli-fotografia/Portal")}>
+        <PortalLink>Acessar Portal</PortalLink>
+      </AcessPortalButton>
       <InstagramLogo height={18} />
       </Links>
   </Container>
