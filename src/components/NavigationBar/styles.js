@@ -21,9 +21,8 @@ export const NavLink = styled.a`
   cursor: pointer;
 `;
 
-
 export const NavItem = styled.li`
-  margin: 20px;
+  padding: 20px;
 `;
 
 export const Links = styled.div`
