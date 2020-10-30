@@ -1,13 +1,13 @@
 import React from "react";
+
 import LoginForm from "./components/LoginForm";
-import { Background, Header, Title } from "./styles";
+import { ReactComponent as Logo } from '../../../assets/logo.svg';
+import { Background } from "./styles";
 
 export default function Register() {
   return (
     <Background>
-      <Header>
-        <Title>Login</Title>
-      </Header>
+      <Logo fill="#7D3C3C" width={200} height={200} />
       <LoginForm />
     </Background>
   );

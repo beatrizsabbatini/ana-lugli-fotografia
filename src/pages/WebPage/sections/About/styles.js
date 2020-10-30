@@ -45,12 +45,14 @@ export const Title = styled.h2`
  text-align: center;
  margin: 0 0 5px 0;
  color: #5A5959;
+ font-size: 40px;
 `
 
 export const Description = styled.p`
  text-align: center;
  margin: 30px 0 0 0;
  color: #5A5959;
+font-size: 20px;
 `
 export const Line = styled.div`
 display: flex;
