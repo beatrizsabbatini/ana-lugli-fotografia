@@ -49,43 +49,11 @@ function Home() {
 
   return (
     <Background>
-      <Header>
-        <Title>Projeto 1 - Github Users </Title>
-      </Header>
       <Body>
-        <h5>Hello {user} !</h5>
-        <SearchContainer>
-          <p>Digite o nome de algum usuário do GitHub:</p>
-          <InputAndButtonContainer>
-            <Input
-              type="text"
-              name="search"
-              id="search"
-              value={inputValue}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-            <Button
-              type="primary"
-              style={{ marginLeft: 10 }}
-              onClick={() => handleButtonPress()}
-            >
-              Buscar usuários
-            </Button>
-          </InputAndButtonContainer>
-          <ErrorMessage>{errorMessage}</ErrorMessage>
-        </SearchContainer>
-
-        {users.length > 0 && (
-          <ul>
-            {users.map((user, index) => (
-              <UsersListItem user={user} />
-            ))}
-          </ul>
-        )}
-      </Body>
       <Button type="primary" style={{ margin: 30 }} onClick={() => logout()}>
         sair
       </Button>
+      </Body>
     </Background>
   );
 }

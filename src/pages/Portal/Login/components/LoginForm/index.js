@@ -1,13 +1,12 @@
 import { useFormik } from "formik";
 import React, { useState } from "react";
 import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useHistory } from "react-router-dom";
 import * as yup from "yup";
 import api from "../../../../../services/login";
-import { FormContainer } from "./styles";
+import { FormContainer, FormButton, RegisterButton } from "./styles";
 
 function LoginForm() {
   const history = useHistory();
@@ -110,17 +109,16 @@ function LoginForm() {
               justifyContent: "space-between",
             }}
           >
-            <Button style={{ width: "49%" }} type="submit">
+            <FormButton type="submit">
               Entrar
-            </Button>
-            <Button
-              style={{ width: "49%" }}
+            </FormButton>
+            <RegisterButton
               type="button"
               onClick={() => history.push("/ana-lugli-fotografia/Cadastro")}
               variant="outline-primary"
             >
               Cadastre-se
-            </Button>
+            </RegisterButton>
           </div>
         </FormContainer>
       </Form>

@@ -19,10 +19,15 @@ export const NavLink = styled.a`
   color: white;
   text-transform: uppercase;
   cursor: pointer;
+  font-weight: 500;
+  :hover{
+  color: #cdcdcd;
+  text-decoration: none;
+}
 `;
 
 export const NavItem = styled.li`
-  padding: 20px;
+  padding: 30px;
 `;
 
 export const Links = styled.div`
@@ -53,10 +58,11 @@ export const AcessPortalButton = styled.div`
 export const PortalLink = styled.a`
 color: white;
 text-transform: uppercase;
-
+font-weight: 500;
 transition: 1s ease;
-
+text-decoration: none;
 :hover{
   color: black;
+  text-decoration: none;
 }
 `
