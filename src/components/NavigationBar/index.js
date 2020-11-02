@@ -34,7 +34,7 @@ export default function NavigationBar() {
 
   return (
     <Container>
-      <Logo height={38} />
+      <Logo height={45} fill="white" />
       <Links>
       {navButtons.map(item => (
         <NavItem>

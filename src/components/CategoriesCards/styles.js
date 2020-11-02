@@ -17,7 +17,7 @@ background-color: #B27272;
 export const TitleContainer = styled.div`
 display: flex;
 flex-direction: column;
-width: 60%;
+width: 70%;
 margin: 0 auto;
 margin-bottom: -70px;
 `
