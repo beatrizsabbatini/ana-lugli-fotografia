@@ -1,7 +1,14 @@
-import axios from "axios";
+import api from './index';
 
-const api = axios.create({
-  baseURL: "https://reqres.in/api",
-});
+export const login = (userData) => {
+  console.log('entrou no service', userData)
+  return api.request({
+    method: 'POST',
+    url: '/autenticacao',
+    data: {
+      nome: userData.email,
+      senha: userData.password
+    }
+  });
+};
 
-export default api;

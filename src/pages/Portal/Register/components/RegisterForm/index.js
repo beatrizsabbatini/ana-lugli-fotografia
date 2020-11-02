@@ -1,16 +1,21 @@
-import { useFormik } from "formik";
 import React, { useState } from "react";
+
+import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-import api from "../../../../../services/register";
+
+import { registerUserRequest } from "../../../../../store/ducks/register";
 import { FormContainer } from "./styles";
 
 function RegisterForm() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { errors, loading, registeredWithSuccess } = useSelector(state => state.register);
 
   const [errorMessage, setErrorMessage] = useState(null);
   const [alertType, setAlertType] = useState("");
@@ -38,21 +43,24 @@ function RegisterForm() {
       email: "",
     },
     validationSchema: schema,
-    onSubmit: async (values) => {
-      api
-        .post("/register", {
-          email: values.email,
-          password: values.password,
-        })
-        .then(function (response) {
-          setAlertType("success");
-          setShow(true);
-        })
-        .catch(function (error) {
-          setAlertType("danger");
-          setShow(true);
-          setErrorMessage(error.message);
-        });
+    onSubmit: (values) => {
+      const userValues = {
+        email: values.email,
+        password: values.password
+      }
+
+      dispatch(registerUserRequest(userValues))
+
+      if (loading == false && errors){
+        setAlertType("danger");
+        setShow(true);
+      }
+     
+      if (loading == false && registeredWithSuccess){
+        setAlertType("success");
+        setShow(true);
+      } 
+
     },
   });
 

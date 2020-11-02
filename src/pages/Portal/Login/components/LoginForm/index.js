@@ -1,19 +1,26 @@
-import { useFormik } from "formik";
 import React, { useState } from "react";
+
+import { useFormik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { useHistory } from "react-router-dom";
 import * as yup from "yup";
-import api from "../../../../../services/login";
+
 import { FormContainer, FormButton, RegisterButton } from "./styles";
+import { loginRequest } from "../../../../../store/ducks/login";
+import { useEffect } from "react";
 
 function LoginForm() {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const { errors, loading, loginSuccess } = useSelector(state => state.login);
 
   const [errorMessage, setErrorMessage] = useState();
   const [alertType, setAlertType] = useState("");
   const [show, setShow] = useState(false);
+  const [values, setValues] = useState();
 
   const schema = yup.object({
     email: yup
@@ -29,26 +36,38 @@ function LoginForm() {
       password: "",
     },
     validationSchema: schema,
-    onSubmit: async (values) => {
-      console.log(values);
-      api
-        .post("/login", {
-          email: values.email,
-          password: values.password,
-        })
-        .then(function (response) {
-          const token = response.data.token;
-          localStorage.setItem("token", token);
-          localStorage.setItem("email", values.email);
-          history.push("/ana-lugli-fotografia/Portal");
-        })
-        .catch(function (error) {
-          setAlertType("danger");
-          setShow(true);
-          setErrorMessage(error.message);
-        });
+    onSubmit: (values) => {
+      const userValues = {
+        email: values.email,
+        password: values.password
+      }
+
+      setValues(userValues);
+
+      dispatch(loginRequest(userValues))
+      
     },
   });
+
+  useEffect(() => {
+    if (values){
+      if (loading == false && errors){
+        console.log('deu erro')
+        setAlertType("danger");
+        setShow(true);
+      } else {
+    
+        if (loading == false && loginSuccess){
+          console.log('nao deu erro')
+          // localStorage.setItem("token", token);
+          localStorage.setItem("email", values.email);
+          history.push("/ana-lugli-fotografia/Portal");
+          setAlertType("success");
+          setShow(false);
+        } 
+      }
+    }
+  }, [values, errors,loading, loginSuccess])
 
   return (
     <>

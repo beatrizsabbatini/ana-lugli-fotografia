@@ -1,7 +1,14 @@
-import axios from "axios";
+import api from './index';
 
-const api = axios.create({
-  baseURL: "https://reqres.in/api",
-});
+export const registerNewUser = (userData) => {
+  console.log('userData', userData)
+  return api.request({
+    method: 'POST',
+    url: '/usuarios',
+    data: {
+      nome: userData.email,
+      senha: userData.password
+    }
+  });
+};
 
-export default api;

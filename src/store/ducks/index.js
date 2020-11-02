@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 
-import users from "./users";
 import bannerItems from './bannerItems';
+import register from './register';
+import login from './login';
 
 export default combineReducers({
-  users,
+  register,
+  login,
   bannerItems
 });
