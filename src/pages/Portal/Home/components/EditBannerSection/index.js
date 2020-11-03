@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Image, Button } from 'react-bootstrap'
 
-import { getBannerItemsRequest, getBannerItemsSuccess } from '../../../../../store/ducks/bannerItems';
+import { getBannerItemsRequest } from '../../../../../store/ducks/bannerItems';
 import EditSectionTitle from '../../../../../components/EditSectionTitle';
 import { BannerItemsContainer, ImageContainer, EditMessage } from './styles';
 import ModalComponent from './ModalComponent';
