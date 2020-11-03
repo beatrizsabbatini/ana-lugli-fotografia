@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ba726563739b0abbb7f32d20861e0ee6",
+    "revision": "1a6febd799b2bb25eebc2b0ba8441be3",
     "url": "/ana-lugli-fotografia/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ana-lugli-fotografia/static/css/2.d9ad5f5c.chunk.css"
   },
   {
-    "revision": "5709e81944aaf746cec0",
+    "revision": "3a664d81b64275789965",
     "url": "/ana-lugli-fotografia/static/css/main.5aef1ac2.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ana-lugli-fotografia/static/js/2.04ea30a4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5709e81944aaf746cec0",
-    "url": "/ana-lugli-fotografia/static/js/main.3c8957cb.chunk.js"
+    "revision": "3a664d81b64275789965",
+    "url": "/ana-lugli-fotografia/static/js/main.2e435915.chunk.js"
   },
   {
     "revision": "85fd7829f17d6a6bcad9",
