@@ -13,7 +13,7 @@ export default function ModalAddExistingPicture({visible, setVisible, item, setT
     
     createBannerItemWithExistingFile(title, item).then(() => {
       setVisible(false);
-      window.location.reload(false);
+      window.location.reload();
     }).catch(err => {
       if (err.response.status === 401){
         setVisible(false);

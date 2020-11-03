@@ -22,7 +22,7 @@ export default function ModalComponent({show, setShow, isEdit, item, setToastVis
 
       deleteBannerItem(item._id).then(() => {
         setShow(false);
-        window.location.reload(false);
+        window.location.reload();
       }).catch(err => {
         if (err.response.status === 401){
           setShow(false);
@@ -35,7 +35,7 @@ export default function ModalComponent({show, setShow, isEdit, item, setToastVis
 
       updateBannerItem(item._id, title).then(() => {
         setShow(false);
-        window.location.reload(false);
+        window.location.reload();
       })
       .catch(err => {
         if (err.response.status === 401){
@@ -50,7 +50,7 @@ export default function ModalComponent({show, setShow, isEdit, item, setToastVis
     
     createBannerItem(title, image).then(() => {
       setShow(false);
-      window.location.reload(false);
+      window.location.reload();
     })
     .catch(err => {
       if (err.response.status === 401){
