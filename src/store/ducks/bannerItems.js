@@ -36,7 +36,6 @@ export default function reducer(state = initialState, action) {
         errors: action.payload
       };
 
-
     default:
       return state;
   }
