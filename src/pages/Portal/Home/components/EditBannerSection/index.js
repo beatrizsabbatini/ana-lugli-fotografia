@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Image, Button } from 'react-bootstrap'
+import { Image, Button, Form } from 'react-bootstrap'
 
 import { getBannerItemsRequest } from '../../../../../store/ducks/bannerItems';
 import EditSectionTitle from '../../../../../components/EditSectionTitle';
-import { BannerItemsContainer, ImageContainer, EditMessage } from './styles';
+import { BannerItemsContainer, ImageContainer, EditMessage, RowContainer, StyledButton } from './styles';
 import ModalComponent from './ModalComponent';
+import { getFiles } from '../../../../../services/searchFilesService';
 
 export default function EditBannerSection() {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ export default function EditBannerSection() {
   const [show, setShow] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [currentItem, setCurrentItem] = useState();
+  const [imageName, setImageName] = useState('');
+  const [formVisible, setFormVisible] = useState(false);
 
   useEffect(() => {
     fetchBannetItems();
@@ -48,14 +51,40 @@ export default function EditBannerSection() {
             )
           })}
         </BannerItemsContainer>
-        <Button onClick={() => {
-          setIsEdit(false);
-          setCurrentItem({});
-          setShow(true);
-          }}>Adicionar Item</Button>
-        <ModalComponent show={show} setShow={setShow} isEdit={isEdit} item={currentItem} />
+        <RowContainer>
+          <StyledButton onClick={() => {
+            setIsEdit(false);
+            setCurrentItem({});
+            setShow(true);
+            }}>Adicionar Imagem do computador</StyledButton>
+            <StyledButton 
+            variant="light"
+            onClick={() => setFormVisible(true) }>Buscar imagem do Banco de Dados</StyledButton>
+          
+        </RowContainer>
+        {formVisible && (
+          <Form.Group>
+            <Form.Label>Pesquise nas fotos salvas no banco de dados:</Form.Label>
+            <RowContainer>
+              <Form.Control 
+                style={{width: 500}}
+                value={imageName}
+                onChange={e => setImageName(e.target.value)}
+                type="text" 
+                placeholder='Digite um nome de arquivo'
+              />
+              <Button variant="primary" style={{marginLeft: 20}} onClick={() => getFiles(imageName)}>
+                Pesquisar
+              </Button>
+              <Button variant="danger" style={{marginLeft: 20}} onClick={() => setFormVisible(false)}>
+                Cancelar
+              </Button>
+            </RowContainer>
+        </Form.Group>
+        )}
       </>
       )}
+      <ModalComponent show={show} setShow={setShow} isEdit={isEdit} item={currentItem} />
     </>
   )
 }

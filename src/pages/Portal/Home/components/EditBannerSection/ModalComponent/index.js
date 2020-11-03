@@ -29,28 +29,27 @@ export default function ModalComponent({show, setShow, isEdit, item}) {
     window.location.reload(false);
   }
 
-  const handleUpdateBannerItem = () => {
+  const handleUpdateBannerItem = async () => {
 
     try {
-      updateBannerItem(item._id, title);
+       await updateBannerItem(item._id, title);
+       setShow(false);
+      window.location.reload(false);
     } catch(err){
       console.log(err)
     }
 
-    setShow(false);
-    window.location.reload(false);
   }
 
-  const handleCreateBannerItem = () => {
+  const handleCreateBannerItem = async () => {
     
     try {
-      createBannerItem(title, image);
+      await createBannerItem(title, image);
+      setShow(false);
+      window.location.reload(false);
     } catch(err){
       console.log(err)
     }
-
-    setShow(false);
-    // window.location.reload(false);
   }
 
   return (
@@ -66,11 +65,10 @@ export default function ModalComponent({show, setShow, isEdit, item}) {
               <Form.File.Label>Upload de Arquivo</Form.File.Label>
               <Form.File.Input  onChange={(e) => setImage(e.target.files[0])} />
             </Form.File>
-            
           </>
         )}
         <Form style={{marginTop: 20}}>
-          <Form.Group controlId="formBasicEmail">
+          <Form.Group>
             <Form.Label>Título</Form.Label>
             <Form.Control 
               value={title}

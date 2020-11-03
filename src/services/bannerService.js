@@ -3,14 +3,14 @@ import api from './index';
 export const getBannerItems = () => {
   return api.request({
     method: 'GET',
-    url: '/banner'
+    url: '/api/banner'
   });
 };
 
 export const deleteBannerItem = (id) => {
   return api.request({
     method: 'DELETE',
-    url: '/banner',
+    url: '/api/banner',
     data: {
       bannerItemId: id
     }
@@ -20,7 +20,7 @@ export const deleteBannerItem = (id) => {
 export const updateBannerItem = (id, title) => {
   return api.request({
     method: 'PUT',
-    url: '/banner',
+    url: '/api/banner',
     data: {
       bannerItemId: id,
       title: title
@@ -35,7 +35,7 @@ export const createBannerItem = (title, image) => {
 
   return api.request({
     method: 'POST',
-    url: '/banner',
+    url: '/api/banner',
     data: formData
   });
 }

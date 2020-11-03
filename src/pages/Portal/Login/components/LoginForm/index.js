@@ -15,7 +15,7 @@ import { useEffect } from "react";
 function LoginForm() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { errors, loading, loginSuccess } = useSelector(state => state.login);
+  const { errors, loading, token } = useSelector(state => state.login);
 
   const [errorMessage, setErrorMessage] = useState();
   const [alertType, setAlertType] = useState("");
@@ -57,9 +57,9 @@ function LoginForm() {
         setShow(true);
       } else {
     
-        if (loading == false && loginSuccess){
+        if (loading == false && token){
           console.log('nao deu erro')
-          // localStorage.setItem("token", token);
+          localStorage.setItem("token", token);
           localStorage.setItem("email", values.email);
           history.push("/ana-lugli-fotografia/Portal");
           setAlertType("success");
@@ -67,7 +67,7 @@ function LoginForm() {
         } 
       }
     }
-  }, [values, errors,loading, loginSuccess])
+  }, [values, errors,loading, token])
 
   return (
     <>

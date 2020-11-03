@@ -4,7 +4,7 @@ export const registerNewUser = (userData) => {
   console.log('userData', userData)
   return api.request({
     method: 'POST',
-    url: '/usuarios',
+    url: '/api/usuarios',
     data: {
       nome: userData.email,
       senha: userData.password

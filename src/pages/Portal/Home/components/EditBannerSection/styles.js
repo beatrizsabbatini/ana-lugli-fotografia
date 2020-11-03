@@ -1,3 +1,5 @@
+import { Button } from "react-bootstrap";
+
 import styled from "styled-components";
 
 export const BannerItemsContainer = styled.div`
@@ -27,4 +29,14 @@ width: 100%;
   font-weight: bold;
   background-color: rgba(0, 0, 0, 0.72);
 }
+`
+
+export const RowContainer = styled.div`
+display: flex;
+flex-direction: row;
+
+`
+
+export const StyledButton = styled(Button)`
+margin-right: 20px;
 `

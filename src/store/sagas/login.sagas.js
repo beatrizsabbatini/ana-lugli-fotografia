@@ -7,9 +7,10 @@ import { loginSuccess, loginErrors, Types } from '../ducks/login';
 function* authenticate({payload}) {
   console.log('entrou no sagas', payload)
   try {
-    yield call(login, payload);
+    const res = yield call(login, payload);
+    console.log(res.data)
 
-    yield put(loginSuccess(true));
+    yield put(loginSuccess(res.data.token));
 
   } catch (err) {
    

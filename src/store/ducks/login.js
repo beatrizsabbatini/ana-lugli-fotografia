@@ -8,7 +8,7 @@ export const Types = {
 
 //Initial state
 const initialState = {
-  loginSuccess: undefined,
+  token: undefined,
   userData: undefined,
   loading: false,
   errors: undefined
@@ -29,7 +29,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         errors: undefined,
         loading: false,
-        loginSuccess: true,
+        token: action.payload,
       };
 
     case Types.LOGIN_ERRORS:
@@ -45,7 +45,7 @@ export default function reducer(state = initialState, action) {
         loading: false,
         errors: undefined,
         userData: undefined,
-        loginSuccess: undefined
+        token: undefined
       };
 
 
@@ -62,10 +62,10 @@ export function loginRequest(userData) {
   };
 }
 
-export function loginSuccess(loginSuccess) {
+export function loginSuccess(token) {
   return {
     type: Types.LOGIN_SUCCESS,
-    payload: loginSuccess
+    payload: token
   };
 }
 
