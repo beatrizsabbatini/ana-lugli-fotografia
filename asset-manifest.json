@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/ana-lugli-fotografia/static/css/main.5aef1ac2.chunk.css",
+    "main.js": "/ana-lugli-fotografia/static/js/main.3c8957cb.chunk.js",
+    "main.js.map": "/ana-lugli-fotografia/static/js/main.3c8957cb.chunk.js.map",
+    "runtime-main.js": "/ana-lugli-fotografia/static/js/runtime-main.4362b8b9.js",
+    "runtime-main.js.map": "/ana-lugli-fotografia/static/js/runtime-main.4362b8b9.js.map",
+    "static/css/2.d9ad5f5c.chunk.css": "/ana-lugli-fotografia/static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.04ea30a4.chunk.js": "/ana-lugli-fotografia/static/js/2.04ea30a4.chunk.js",
+    "static/js/2.04ea30a4.chunk.js.map": "/ana-lugli-fotografia/static/js/2.04ea30a4.chunk.js.map",
+    "index.html": "/ana-lugli-fotografia/index.html",
+    "precache-manifest.8aef9b2f721d5e3a335b44d11888b019.js": "/ana-lugli-fotografia/precache-manifest.8aef9b2f721d5e3a335b44d11888b019.js",
+    "service-worker.js": "/ana-lugli-fotografia/service-worker.js",
+    "static/css/2.d9ad5f5c.chunk.css.map": "/ana-lugli-fotografia/static/css/2.d9ad5f5c.chunk.css.map",
+    "static/css/main.5aef1ac2.chunk.css.map": "/ana-lugli-fotografia/static/css/main.5aef1ac2.chunk.css.map",
+    "static/js/2.04ea30a4.chunk.js.LICENSE.txt": "/ana-lugli-fotografia/static/js/2.04ea30a4.chunk.js.LICENSE.txt",
+    "static/media/ana.jpg": "/ana-lugli-fotografia/static/media/ana.b4a9988e.jpg",
+    "static/media/decoration-line.svg": "/ana-lugli-fotografia/static/media/decoration-line.f5fe2386.svg",
+    "static/media/instagram.2ba8005b.svg": "/ana-lugli-fotografia/static/media/instagram.2ba8005b.svg",
+    "static/media/logo.9f47f5a5.svg": "/ana-lugli-fotografia/static/media/logo.9f47f5a5.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4362b8b9.js",
+    "static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.04ea30a4.chunk.js",
+    "static/css/main.5aef1ac2.chunk.css",
+    "static/js/main.3c8957cb.chunk.js"
+  ]
+}
