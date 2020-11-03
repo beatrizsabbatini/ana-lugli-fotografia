@@ -66,7 +66,7 @@ export default function ModalComponent({show, setShow, isEdit, item, setToastVis
           <Modal.Title>{isEdit ? 'Editar' : 'Adicionar'} item</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        {isEdit && (<Image src={`http://localhost:3333/files/${item.image}`} width="100%" />)}
+        {isEdit && (<Image src={`https://backend-ana-lugli-fotografia.herokuapp.com/files/${item.image}`} width="100%" />)}
         {!isEdit && (
           <>
             <Form.File id="formcheck-api-regular">

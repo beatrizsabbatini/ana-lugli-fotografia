@@ -28,7 +28,7 @@ export default function ModalAddExistingPicture({visible, setVisible, item, setT
       <Modal.Title>Adicionar item</Modal.Title>
     </Modal.Header>
     <Modal.Body>
-    <Image src={`http://localhost:3333/files/${item}`} width="100%" />
+    <Image src={`https://backend-ana-lugli-fotografia.herokuapp.com/files/${item}`} width="100%" />
     <Form style={{marginTop: 20}}>
       <Form.Group>
         <Form.Label>Título</Form.Label>

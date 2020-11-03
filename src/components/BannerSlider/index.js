@@ -17,7 +17,7 @@ export default function BannerSlider({items}) {
           return (
            <Carousel.Item key={item._id}>
            <BannerSlide
-             src={`http://localhost:3333/files/${item.image}`}
+             src={`https://backend-ana-lugli-fotografia.herokuapp.com/files/${item.image}`}
              alt="slide"
            />
            <Carousel.Caption>

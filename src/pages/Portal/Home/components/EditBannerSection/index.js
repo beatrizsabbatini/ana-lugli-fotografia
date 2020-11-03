@@ -54,7 +54,7 @@ export default function EditBannerSection() {
                 setShow(true);
                 }}>
                 {item.image ? (
-                  <Image src={`http://localhost:3333/files/${item.image}`} thumbnail height={60} width={150} />
+                  <Image src={`https://backend-ana-lugli-fotografia.herokuapp.com/files/${item.image}`} thumbnail height={60} width={150} />
                 ) :
                 (
                   <Image src="holder.js/171x180" thumbnail height={60} width={150} />
@@ -99,7 +99,7 @@ export default function EditBannerSection() {
                 <div key={index}>
                   <RowContainer >
                     <ImageContainer>
-                      <Image src={`http://localhost:3333/files/${item}`} thumbnail height={60} width={150} />
+                      <Image src={`https://backend-ana-lugli-fotografia.herokuapp.com/files/${item}`} thumbnail height={60} width={150} />
                     </ImageContainer>
                     <Button style={{height: 50}} onClick={() => setVisible(true)}>Adicionar esta imagem ao Banner</Button>
                   </RowContainer>
