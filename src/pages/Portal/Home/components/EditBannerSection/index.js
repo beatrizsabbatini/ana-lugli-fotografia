@@ -5,10 +5,11 @@ import { Image, Button, Form } from 'react-bootstrap'
 
 import { getBannerItemsRequest } from '../../../../../store/ducks/bannerItems';
 import EditSectionTitle from '../../../../../components/EditSectionTitle';
-import { BannerItemsContainer, ImageContainer, EditMessage, RowContainer, StyledButton, Separator } from './styles';
+import { BannerItemsContainer, ImageContainer, EditMessage, RowContainer, StyledButton, Separator, ToastContainer } from './styles';
 import ModalComponent from './ModalComponent';
 import { getFilteredFilesRequest } from '../../../../../store/ducks/fileSearch';
 import ModalAddExistingPicture from './ModalAddExistingPicture';
+import UnathorizedToast from '../../../../../components/UnathorizedToast';
 
 export default function EditBannerSection() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ export default function EditBannerSection() {
   const [currentItem, setCurrentItem] = useState();
   const [imageName, setImageName] = useState('');
   const [formVisible, setFormVisible] = useState(false);
+  const [toastVisible, setToastVisible] = useState(false);
 
   useEffect(() => {
     fetchBannetItems();
@@ -101,7 +103,7 @@ export default function EditBannerSection() {
                     </ImageContainer>
                     <Button style={{height: 50}} onClick={() => setVisible(true)}>Adicionar esta imagem ao Banner</Button>
                   </RowContainer>
-                  <ModalAddExistingPicture visible={visible} setVisible={setVisible} item={item} />
+                  <ModalAddExistingPicture setToastVisible={setToastVisible} visible={visible} setVisible={setVisible} item={item} />
                 </div>
               )
             })}
@@ -109,8 +111,10 @@ export default function EditBannerSection() {
         )}
       </>
       )}
-      <ModalComponent show={show} setShow={setShow} isEdit={isEdit} item={currentItem} />
-      
+      <ModalComponent show={show} setShow={setShow} isEdit={isEdit} item={currentItem} setToastVisible={setToastVisible} />
+      <ToastContainer>
+        <UnathorizedToast show={toastVisible} setShow={setToastVisible} />
+      </ToastContainer>
     </>
   )
 }

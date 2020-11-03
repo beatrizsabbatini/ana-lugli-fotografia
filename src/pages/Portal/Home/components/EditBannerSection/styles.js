@@ -49,3 +49,9 @@ background-color: white;
 width: 86vw;
 margin: 30px 0 30px 0;  
 `
+
+export const ToastContainer = styled.div`
+position: absolute;
+right: 5%;
+top: 5%;
+`

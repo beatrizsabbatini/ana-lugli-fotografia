@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button, Modal, Image, Form } from 'react-bootstrap'
 import { createBannerItem, createBannerItemWithExistingFile } from '../../../../../../services/bannerService';
 
-export default function ModalAddExistingPicture({visible, setVisible, item}) {
+export default function ModalAddExistingPicture({visible, setVisible, item, setToastVisible}) {
   const [title, setTitle] = useState('');
 
   const handleClose = () => {
@@ -11,13 +11,15 @@ export default function ModalAddExistingPicture({visible, setVisible, item}) {
 
   const handleCreateBannerItem = async () => {
     
-    try {
-      await createBannerItemWithExistingFile(title, item);
+    createBannerItemWithExistingFile(title, item).then(() => {
       setVisible(false);
       window.location.reload(false);
-    } catch(err){
-      console.log(err)
-    }
+    }).catch(err => {
+      if (err.response.status === 401){
+        setVisible(false);
+        setToastVisible(true);
+      }
+    })
   }
 
   return (

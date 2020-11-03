@@ -6,7 +6,7 @@ import { Modal, Button, Form, Image } from 'react-bootstrap';
 
 import { createBannerItem, deleteBannerItem, updateBannerItem } from '../../../../../../services/bannerService';
 
-export default function ModalComponent({show, setShow, isEdit, item}) {
+export default function ModalComponent({show, setShow, isEdit, item, setToastVisible}) {
   const [title, setTitle] = useState('');
   const [image, setImage] = useState();
 
@@ -20,37 +20,44 @@ export default function ModalComponent({show, setShow, isEdit, item}) {
 
   const handleDelete = () => {
 
-    try {
-      deleteBannerItem(item._id);
-    } catch(err){
-      console.log(err)
-    }
-
-    setShow(false);
-    window.location.reload(false);
+      deleteBannerItem(item._id).then(() => {
+        setShow(false);
+        window.location.reload(false);
+      }).catch(err => {
+        if (err.response.status === 401){
+          setShow(false);
+          setToastVisible(true);
+        }
+      })
   }
 
   const handleUpdateBannerItem = async () => {
 
-    try {
-       await updateBannerItem(item._id, title);
-       setShow(false);
-      window.location.reload(false);
-    } catch(err){
-      console.log(err)
-    }
+      updateBannerItem(item._id, title).then(() => {
+        setShow(false);
+        window.location.reload(false);
+      })
+      .catch(err => {
+        if (err.response.status === 401){
+          setShow(false);
+          setToastVisible(true);
+        }
+      })
 
   }
 
   const handleCreateBannerItem = async () => {
     
-    try {
-      await createBannerItem(title, image);
+    createBannerItem(title, image).then(() => {
       setShow(false);
-      // window.location.reload(false);
-    } catch(err){
-      console.log(err)
-    }
+      window.location.reload(false);
+    })
+    .catch(err => {
+      if (err.response.status === 401){
+        setShow(false);
+        setToastVisible(true);
+      }
+    })
   }
 
   return (
