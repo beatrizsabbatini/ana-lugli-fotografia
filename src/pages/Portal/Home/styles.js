@@ -37,10 +37,3 @@ export const InputAndButtonContainer = styled.div`
   flex-direction: row;
   align-items: center;
 `;
-
-export const Separator = styled.hr`
-height: 0.5px;
-background-color: white;
-width: 86vw;
-margin: 30px 0 30px 0;  
-`

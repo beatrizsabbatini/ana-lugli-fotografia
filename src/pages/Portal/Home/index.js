@@ -10,7 +10,6 @@ import EditBannerSection from "./components/EditBannerSection";
 import {
   Background,
   Body,
-  Separator,
 } from "./styles";
 
 function Home() {
@@ -30,7 +29,6 @@ function Home() {
       </Button>
       <Body>
       <EditBannerSection />
-      {/* <Separator /> */}
       </Body>
     </Background>
   );

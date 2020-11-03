@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 import { Modal, Button, Form, Image } from 'react-bootstrap';
+
 import { createBannerItem, deleteBannerItem, updateBannerItem } from '../../../../../../services/bannerService';
 
 export default function ModalComponent({show, setShow, isEdit, item}) {
@@ -46,7 +47,7 @@ export default function ModalComponent({show, setShow, isEdit, item}) {
     try {
       await createBannerItem(title, image);
       setShow(false);
-      window.location.reload(false);
+      // window.location.reload(false);
     } catch(err){
       console.log(err)
     }

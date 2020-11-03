@@ -39,3 +39,15 @@ export const createBannerItem = (title, image) => {
     data: formData
   });
 }
+
+export const createBannerItemWithExistingFile = (title, image) => {
+
+  return api.request({
+    method: 'POST',
+    url: '/api/bannerExistingFile',
+    data: {
+      title: title,
+      image: image
+    }
+  });
+}

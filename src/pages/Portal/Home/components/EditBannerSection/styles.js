@@ -34,9 +34,18 @@ width: 100%;
 export const RowContainer = styled.div`
 display: flex;
 flex-direction: row;
+align-items: center;
 
 `
 
 export const StyledButton = styled(Button)`
 margin-right: 20px;
+`
+
+
+export const Separator = styled.hr`
+height: 0.5px;
+background-color: white;
+width: 86vw;
+margin: 30px 0 30px 0;  
 `

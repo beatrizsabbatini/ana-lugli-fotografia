@@ -5,15 +5,18 @@ import { Image, Button, Form } from 'react-bootstrap'
 
 import { getBannerItemsRequest } from '../../../../../store/ducks/bannerItems';
 import EditSectionTitle from '../../../../../components/EditSectionTitle';
-import { BannerItemsContainer, ImageContainer, EditMessage, RowContainer, StyledButton } from './styles';
+import { BannerItemsContainer, ImageContainer, EditMessage, RowContainer, StyledButton, Separator } from './styles';
 import ModalComponent from './ModalComponent';
-import { getFiles } from '../../../../../services/searchFilesService';
+import { getFilteredFilesRequest } from '../../../../../store/ducks/fileSearch';
+import ModalAddExistingPicture from './ModalAddExistingPicture';
 
 export default function EditBannerSection() {
   const dispatch = useDispatch();
   const { items: bannerItems, loading } = useSelector(state => state.bannerItems);
+  const { files } = useSelector(state => state.fileSearch);
 
   const [show, setShow] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [currentItem, setCurrentItem] = useState();
   const [imageName, setImageName] = useState('');
@@ -26,6 +29,14 @@ export default function EditBannerSection() {
   const fetchBannetItems = () => {
     dispatch(getBannerItemsRequest());
   }
+
+  const handleSearch = () => {
+    dispatch(getFilteredFilesRequest(imageName));
+  }
+  
+  useEffect(() => {
+    if (files) console.log(files)
+  }, [files])
 
   return (
     <>
@@ -62,6 +73,7 @@ export default function EditBannerSection() {
             onClick={() => setFormVisible(true) }>Buscar imagem do Banco de Dados</StyledButton>
           
         </RowContainer>
+        <Separator />
         {formVisible && (
           <Form.Group>
             <Form.Label>Pesquise nas fotos salvas no banco de dados:</Form.Label>
@@ -73,18 +85,32 @@ export default function EditBannerSection() {
                 type="text" 
                 placeholder='Digite um nome de arquivo'
               />
-              <Button variant="primary" style={{marginLeft: 20}} onClick={() => getFiles(imageName)}>
+              <Button variant="primary" style={{marginLeft: 20}} onClick={handleSearch}>
                 Pesquisar
               </Button>
               <Button variant="danger" style={{marginLeft: 20}} onClick={() => setFormVisible(false)}>
                 Cancelar
               </Button>
             </RowContainer>
+            {files && files.map((item, index) => {
+              return (
+                <div key={index}>
+                  <RowContainer >
+                    <ImageContainer>
+                      <Image src={`http://localhost:3333/files/${item}`} thumbnail height={60} width={150} />
+                    </ImageContainer>
+                    <Button style={{height: 50}} onClick={() => setVisible(true)}>Adicionar esta imagem ao Banner</Button>
+                  </RowContainer>
+                  <ModalAddExistingPicture visible={visible} setVisible={setVisible} item={item} />
+                </div>
+              )
+            })}
         </Form.Group>
         )}
       </>
       )}
       <ModalComponent show={show} setShow={setShow} isEdit={isEdit} item={currentItem} />
+      
     </>
   )
 }
